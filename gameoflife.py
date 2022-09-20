@@ -1,8 +1,11 @@
 width = 3
 height = 3
 stage = []
+new_stage = []
+
 for i in range(height):
     stage.append([False]*width)
+    new_stage.append([False]*width)
 
 def print_stage(stage):
     for row in stage:

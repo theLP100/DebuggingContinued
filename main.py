@@ -1,4 +1,4 @@
-from gameoflife import width, height, stage, print_stage, count_neighbors
+from gameoflife import width, height, stage, new_stage, print_stage, count_neighbors
 
 def init_stage(stage):
     for v_pos in range(0, height):
@@ -19,19 +19,21 @@ def one_generation(stage):
         for h_pos in range(len(stage[0])):
             neighbors = count_neighbors(stage, v_pos, h_pos)
             if not stage[v_pos][h_pos] and neighbors == 3:
-                stage[v_pos][h_pos] = True
+                new_stage[v_pos][h_pos] = True
             elif stage[v_pos][h_pos] and neighbors < 2:
-                stage[v_pos][h_pos] = False
+                new_stage[v_pos][h_pos] = False
             elif stage[v_pos][h_pos] and (neighbors == 2 or neighbors == 3):
-                stage[v_pos][h_pos] = True
+                new_stage[v_pos][h_pos] = True
             elif stage[v_pos][h_pos] and neighbors > 3:
-                stage[v_pos][h_pos] = False
+                new_stage[v_pos][h_pos] = False
+
+    return new_stage
                 
 
 init_stage(stage)
 print("First Generation:")
 print_stage(stage)
-one_generation(stage)
+the_next_stage = one_generation(stage)
 print("Second Generation:")
-print_stage(stage)
+print_stage(the_next_stage)
 
