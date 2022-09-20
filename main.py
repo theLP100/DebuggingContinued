@@ -2,11 +2,11 @@ from gameoflife import width, height, stage, print_stage, count_neighbors
 
 def init_stage(stage):
     for v_pos in range(0, height):
-      for h_pos in range(0, width):
-        if h_pos == 1:
-          stage[v_pos][h_pos] = True
-        else:
-          stage[v_pos][h_pos] = False
+        for h_pos in range(0, width):
+            if h_pos == 1:
+                stage[v_pos][h_pos] = True
+            else:
+                stage[v_pos][h_pos] = False
 
 # Generation Rules:
 # 1. Any live cell with < 2 neighbors dies
@@ -16,7 +16,7 @@ def init_stage(stage):
 
 def one_generation(stage):
     for v_pos in range(len(stage)):
-        for h_pos in range(len(v_pos)):
+        for h_pos in range(len(stage[0])):
             neighbors = count_neighbors(stage, v_pos, h_pos)
             if not stage[v_pos][h_pos] and neighbors == 3:
                 stage[v_pos][h_pos] = True
